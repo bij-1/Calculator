@@ -15,16 +15,25 @@ body {
     padding: 20px;
 }
 
+/* Base Flexible Alignment Container */
+.app-container {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+    max-width: 680px;
+    align-items: flex-start;
+}
+
 /* Calculator Wrapper */
 .calculator {
     width: 100%;
-    max-width: 360px;
-    background-color: rgba(255, 255, 255, 0.1);
+    max-width: 340px;
+    background-color: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* Display Screen */
@@ -64,7 +73,7 @@ body {
 
 /* Button Styling Defaults */
 .btn {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.08);
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 14px;
@@ -78,7 +87,7 @@ body {
 }
 
 .btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.18);
 }
 
 .btn:active {
@@ -86,7 +95,6 @@ body {
 }
 
 /* Grid Variances */
-/* Ensure both AC and 0 span 2 columns nicely */
 .clear, .zero {
     grid-column: span 2;
 }
@@ -101,12 +109,12 @@ body {
 }
 
 .btn.operator {
-    background-color: rgba(241, 196, 15, 0.2);
+    background-color: rgba(241, 196, 15, 0.15);
     color: #ffeaa7;
     font-weight: 600;
 }
 .btn.operator:hover {
-    background-color: rgba(241, 196, 15, 0.35);
+    background-color: rgba(241, 196, 15, 0.3);
 }
 
 .btn.equal {
@@ -116,4 +124,114 @@ body {
 }
 .btn.equal:hover {
     background-color: #27ae60;
+}
+
+/* --- NEW HISTORY PANEL STYLE RULES --- */
+.history-panel {
+    flex: 1;
+    height: 480px;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.history-header h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.clear-history-btn {
+    background: none;
+    border: 1px solid rgba(231, 76, 60, 0.4);
+    color: #ff7675;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.clear-history-btn:hover {
+    background-color: rgba(231, 76, 60, 0.2);
+}
+
+.history-log {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 5px;
+}
+
+/* Custom History Scrollbar UI tracking overlay colors */
+.history-log::-webkit-scrollbar {
+    width: 6px;
+}
+.history-log::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+.empty-history-msg {
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+/* Individual Log Entries */
+.history-item {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    border-radius: 10px;
+    text-align: right;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.history-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-left-color: #2ecc71;
+}
+
+.hist-expr {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.hist-res {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Responsive view collapse for mobile phones */
+@media (max-width: 640px) {
+    .app-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .history-panel {
+        width: 100%;
+        max-width: 340px;
+        height: 250px;
+    }
 }
